@@ -15,16 +15,18 @@ def get_HTML(url):
     soup = BeautifulSoup(response.text,'html.parser')
     return soup
 
+#formatting desired scraped info
 def extract_line(header,soup):
     return re.findall('%s: +(.*)' %(header),soup.get_text())[0]
 
+#save name and purpose to variables using extract_line() and append to the dataframe
 def save_info(soup,df=pd.DataFrame()):
     name = extract_line('Name',soup)
     purpose = extract_line('Purpose',soup)
     return df.append(pd.Series({'Name':name,'Purpose':purpose}),ignore_index=True)
 
 
-
+#specify website, how many lines you want, output to csv
 if __name__ == '__main__':
     url = 'http://3.95.249.159:8000/random_company'
     output = pd.DataFrame()
