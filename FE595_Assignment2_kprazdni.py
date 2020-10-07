@@ -25,7 +25,7 @@ def save_info(soup,df=pd.DataFrame()):
 
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     url = 'http://3.95.249.159:8000/random_company'
     output = pd.DataFrame()
     for i in range(50):
